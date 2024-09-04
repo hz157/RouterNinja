@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MiWiFi R1C Mini OpenSSH</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>MiWiFi R1C OpenSSH</h1>
+        <form method="POST">
+            <label for="stok">Stok:</label>
+            <input type="text" id="stok" name="stok" required>
+
+            <label for="oldpwd">Web Manage Password:</label>
+            <input type="password" id="oldpwd" name="oldpwd" required>
+
+            <label for="newpwd">SSH Password:</label>
+            <input type="password" id="newpwd" name="newpwd" value="password" required>
+            <span class="default-hint">Default "SSH Password" value is "password"</span>
+
+            <button type="submit">Submit</button>
+        </form>
+
+        {% if results %}
+        <h2>Results:</h2>
+        <ul>
+            {% for result in results %}
+            <li>
+                <strong>URL:</strong> {{ result.url }}<br>
+                <strong>Status Code:</strong> {{ result.status_code }}<br>
+                <strong>Headers:</strong> {{ result.headers }}<br>
+                <strong>Response:</strong> {{ result.text }}<br>
+            </li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+    </div>
+</body>
+</html>
